@@ -175,7 +175,6 @@ class CollectdParser(threading.Thread):
                     field_str +=  "_" + data['dsnames'][ds_name]
                     field[field_str] = float(data["values"][ds_name]) if data["values"][ds_name] != None else 0.0;
 
-
             elif plugin_type == 'docker':
                 measurement = 'container_metrics'
                 # tag['instance'] = "all"#data["plugin_instance"]
@@ -259,6 +258,12 @@ class CollectdParser(threading.Thread):
                     field_str =  data['dsnames'][ds_name]
                     field[field_str] = float(data["values"][ds_name]) if data["values"][ds_name] != None else 0.0;   
 
+            elif plugin_type == 'jvm' or plugin_type == 'kafka':
+                measurement = 'kafka_metrics'
+                tag['instance'] = data['plugin_instance']
+                for ds_name in range(len(data['dsnames'])):
+                    field[data['type_instance']] = float(
+                        data["values"][ds_name]) if data["values"][ds_name] != None else 0.0;
 
             elif plugin_type == 'linux_perf_plus':
                 #b'[{"values":[921156,12806,0],"dstypes":["gauge","gauge","gauge"],"dsnames":["cs","page-faults","major-faults"],"time":1516046622.650,"interval":5.000,"host":"localhost","plugin":"linux_perf_plus","plugin_instance":"all","type":"indices_perf_host","type_instance":""}]'
