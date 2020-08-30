@@ -258,8 +258,8 @@ class CollectdParser(threading.Thread):
                     field_str =  data['dsnames'][ds_name]
                     field[field_str] = float(data["values"][ds_name]) if data["values"][ds_name] != None else 0.0;   
 
-            elif plugin_type == 'jvm' or plugin_type == 'kafka':
-                measurement = 'kafka_metrics'
+            elif plugin_type == 'docker_kafka':
+                measurement = 'docker_kafka_metrics'
                 tag['instance'] = data['plugin_instance']
                 for ds_name in range(len(data['dsnames'])):
                     field[data['type_instance']] = float(
