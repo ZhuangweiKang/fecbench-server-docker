@@ -4,9 +4,8 @@ WORKDIR /usr/src/app
 
 RUN git clone https://github.com/ZhuangweiKang/pycollectdsubscriber.git
 
-COPY pycollectdsubscriber/requirement.txt ./
-RUN pip3 install --no-cache-dir -r requirement.txt
+WORKDIR /usr/src/app/pycollectdsubscriber
 
-COPY . .
+RUN pip3 install --no-cache-dir -r requirement.txt
 
 CMD /bin/bash

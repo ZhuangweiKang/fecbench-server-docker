@@ -22,9 +22,9 @@ services:
     build: 
       context: ./pycollector
       dockerfile: dockerfile-py
-    command: sh pycollectdsubscriber/run_collector.sh 20
+    command: sh run_collector.sh 20
     # entrypoint: ["/bin/bash", "-c", "'sleep 15 && python -u parsingthread.py'"] 
-    working_dir: /usr/src/app
+    # working_dir: /usr/src/app/
     # image: "bitnami/python:latest"
     # volumes: 
     #   - "./pycollector:/opt"
