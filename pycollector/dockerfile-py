@@ -3,9 +3,8 @@ FROM python:3.6
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/ZhuangweiKang/pycollectdsubscriber.git
-RUN cd pycollectdsubscriber
 
-COPY requirement.txt ./
+COPY pycollectdsubscriber/requirement.txt ./
 RUN pip3 install --no-cache-dir -r requirement.txt
 
 COPY . .
