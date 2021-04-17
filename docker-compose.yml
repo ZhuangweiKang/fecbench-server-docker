@@ -1,5 +1,9 @@
 --- 
 version: "3"
+networks:
+  default:
+    external:
+      name: fecbench_net
 services: 
   chronograf: 
     depends_on: 
